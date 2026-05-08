@@ -5,8 +5,8 @@ import type { UserAnswers } from "../art/types"
 /** Render the numbered direct-navigation progress group. */
 export function ProgressGrid({ answers, currentItemId, onNavigate, totalItems }: Props) {
   return (
-    <div className="overflow-x-auto py-1">
-      <ButtonGroup aria-label="Artwork progress" className="mx-auto min-w-max">
+    <div className="w-full overflow-x-auto py-1">
+      <ButtonGroup aria-label="Artwork progress" className="mx-auto">
         {Array.from({ length: totalItems }, (_, index) => index + 1).map(itemId => (
           <button
             aria-label={`Go to item ${itemId}`}

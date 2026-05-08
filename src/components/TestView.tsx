@@ -30,38 +30,38 @@ export function TestView({ attempt, item, items, onAnswer, onNavigate }: Props) 
           src={item.imagePath}
         />
       </div>
-      <footer className="fixed inset-x-0 bottom-0 z-10 border-t border-slate-200 bg-slate-50/95 px-4 py-3 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center gap-3">
-          <button
-            className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium disabled:opacity-50"
-            disabled={item.id === 1}
-            onClick={() => onNavigate(item.id - 1)}
-            type="button"
-          >
-            Previous
-            <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">
-              P / ←
-            </span>
-          </button>
-          <div className="min-w-0 flex-1">
-            <ProgressGrid
-              answers={attempt.answers}
-              currentItemId={item.id}
-              onNavigate={onNavigate}
-              totalItems={items.length}
-            />
+      <footer className="fixed inset-x-0 bottom-0 z-10 bg-slate-50/95 px-4 py-3 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2">
+          <div className="flex items-center justify-center gap-3">
+            <button
+              className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium disabled:opacity-50"
+              disabled={item.id === 1}
+              onClick={() => onNavigate(item.id - 1)}
+              type="button"
+            >
+              Previous
+              <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">
+                P / ←
+              </span>
+            </button>
+            <button
+              className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium disabled:opacity-50"
+              disabled={item.id === items.length}
+              onClick={() => onNavigate(item.id + 1)}
+              type="button"
+            >
+              Next
+              <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">
+                N / →
+              </span>
+            </button>
           </div>
-          <button
-            className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium disabled:opacity-50"
-            disabled={item.id === items.length}
-            onClick={() => onNavigate(item.id + 1)}
-            type="button"
-          >
-            Next
-            <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">
-              N / →
-            </span>
-          </button>
+          <ProgressGrid
+            answers={attempt.answers}
+            currentItemId={item.id}
+            onNavigate={onNavigate}
+            totalItems={items.length}
+          />
         </div>
       </footer>
     </section>
