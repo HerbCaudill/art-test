@@ -32,7 +32,7 @@ export function TestView({ attempt, item, items, onAnswer, onNavigate }: Props) 
       </div>
       <footer className="fixed inset-x-0 bottom-0 z-10 bg-slate-50/95 px-4 py-3 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-2">
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex w-full items-center justify-between gap-3">
             <button
               className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium disabled:opacity-50"
               disabled={item.id === 1}
