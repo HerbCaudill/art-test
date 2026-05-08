@@ -1,44 +1,32 @@
-import { IconX } from "@tabler/icons-react"
+import { useState } from "react"
+import { ThumbnailButton } from "./ThumbnailButton"
 import type { ArtTestItem, UserAnswers } from "../art/types"
 
 /** Render one grouped answer-key thumbnail grid. */
-export function ThumbnailGrid({ answers, ariaLabel, items, onSelect, title }: Props) {
+export function ThumbnailGrid({ answers, ariaLabel, items, title }: Props) {
+  const [activeItemId, setActiveItemId] = useState<number | null>(null)
+
   return (
     <section>
-      <h2 className="text-2xl font-semibold text-slate-950">{title}</h2>
-      <div
-        aria-label={ariaLabel}
-        className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4"
-      >
-        {items.map(item => {
+      <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
+      <div aria-label={ariaLabel} className="mt-3 grid grid-cols-5 gap-1 sm:grid-cols-8">
+        {items.map((item, index) => {
           const isIncorrect = answers[item.id] !== item.trueLabel
+          const userAnswer = answers[item.id] === "human" ? "Human" : "AI"
+          const correctAnswer = item.trueLabel === "human" ? "Human" : "AI"
 
           return (
-            <button
-              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm focus:ring-2 focus:ring-slate-950 focus:outline-none"
+            <ThumbnailButton
+              correctAnswer={correctAnswer}
+              isIncorrect={isIncorrect}
+              item={item}
               key={item.id}
-              onClick={() => onSelect(item)}
-              onFocus={() => onSelect(item)}
-              onMouseEnter={() => onSelect(item)}
-              type="button"
-            >
-              <img
-                alt=""
-                className="h-32 w-full object-cover transition group-hover:scale-105"
-                src={item.imagePath}
-              />
-              {isIncorrect ?
-                <span
-                  aria-label="Incorrect answer"
-                  className="absolute top-2 right-2 rounded-full bg-red-600 p-1 text-white"
-                >
-                  <IconX aria-hidden="true" size={20} />
-                </span>
-              : null}
-              <span className="block p-3 text-sm font-medium text-slate-950">
-                {item.id}. {item.title}
-              </span>
-            </button>
+              onHide={() => setActiveItemId(null)}
+              onShow={() => setActiveItemId(item.id)}
+              showDetails={activeItemId === item.id}
+              side={index % 8 > 3 ? "left" : "right"}
+              userAnswer={userAnswer}
+            />
           )
         })}
       </div>
@@ -53,8 +41,6 @@ type Props = {
   ariaLabel: string
   /** Items in this answer-key group. */
   items: ArtTestItem[]
-  /** Called when an item is previewed or opened. */
-  onSelect: (item: ArtTestItem) => void
   /** Visible group heading. */
   title: string
 }

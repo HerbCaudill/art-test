@@ -93,25 +93,30 @@ describe("App", () => {
     expect(screen.getByRole("button", { name: /Human/ })).not.toHaveClass("bg-slate-950")
   })
 
-  it("shows locked results with grouped answer key details after the final vote", () => {
+  it("shows compact grouped results after the final vote", () => {
     render(<App />)
 
     startTest()
     answerAllItems()
 
     expect(screen.getByRole("heading", { name: "Your score" })).toBeInTheDocument()
-    expect(screen.getByText("24 / 50")).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Human art" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "AI art" })).toBeInTheDocument()
+    expect(screen.getByText("48% correct")).toBeInTheDocument()
+    expect(
+      screen.queryByText("Answers are locked. Start over to try again."),
+    ).not.toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "👤 Human art" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "🤖 AI art" })).toBeInTheDocument()
     expect(screen.getAllByLabelText(/Incorrect answer/)).toHaveLength(26)
+    expect(screen.queryByText(/1\. Angel Woman/)).not.toBeInTheDocument()
 
-    fireEvent.click(
-      within(screen.getByLabelText("AI art answer key")).getByRole("button", {
-        name: /Girl In Field/,
-      }),
-    )
+    const girlInField = within(screen.getByLabelText("AI art answer key")).getByRole("button", {
+      name: /Girl In Field/,
+    })
 
-    expect(screen.getByRole("dialog", { name: "Girl In Field" })).toBeInTheDocument()
+    fireEvent.focus(girlInField)
+
+    expect(screen.queryByRole("dialog", { name: "Girl In Field" })).not.toBeInTheDocument()
+    expect(screen.getByRole("tooltip", { name: "Girl In Field" })).toBeInTheDocument()
     expect(screen.getByText("Your answer: Human")).toBeInTheDocument()
     expect(screen.getByText("Correct answer: AI")).toBeInTheDocument()
   })

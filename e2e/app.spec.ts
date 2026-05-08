@@ -28,13 +28,12 @@ test("completes a full attempt, locks results, reviews details, and starts over"
   await answerItems(page, 50)
 
   await expect(page.getByRole("heading", { name: "Your score" })).toBeVisible()
-  await expect(page.getByText(/\/ 50/)).toBeVisible()
+  await expect(page.getByText(/% correct/)).toBeVisible()
   await expect(page.getByRole("button", { name: "Human" })).toHaveCount(0)
 
   await page.getByRole("button", { name: /Girl In Field/ }).focus()
-  await expect(page.getByRole("dialog", { name: "Girl In Field" })).toBeVisible()
+  await expect(page.getByRole("tooltip", { name: "Girl In Field" })).toBeVisible()
   await expect(page.getByText("Correct answer: AI")).toBeVisible()
-  await page.getByRole("button", { name: "Close" }).click()
 
   await page.getByRole("button", { name: "Start over" }).click()
   await expect(page.getByRole("button", { name: "Start" })).toBeVisible()
@@ -64,5 +63,5 @@ test("opens answer-key details with keyboard focus", async ({ page }) => {
   await answerItems(page, 50)
 
   await page.getByRole("button", { name: /Angel Woman/ }).focus()
-  await expect(page.getByRole("dialog", { name: "Angel Woman" })).toBeVisible()
+  await expect(page.getByRole("tooltip", { name: "Angel Woman" })).toBeVisible()
 })
