@@ -2,10 +2,10 @@
 export const scoreAxisBubbleGap = 60
 
 /** The score-axis bubble height in pixels. */
-export const scoreAxisBubbleHeight = 32
+export const scoreAxisBubbleHeight = 48
 
 /** The score-axis bubble width in pixels. */
-export const scoreAxisBubbleWidth = 132
+export const scoreAxisBubbleWidth = 220
 
 /** The vertical gap between score-axis bubble lanes. */
 export const scoreAxisLaneGap = 8
@@ -14,4 +14,4 @@ export const scoreAxisLaneGap = 8
 export const scoreAxisWidth = 576
 
 /** The score-axis y-coordinate in pixels. */
-export const scoreAxisY = 56
+export const scoreAxisY = 128

@@ -56,8 +56,8 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
   }, [])
 
   return (
-    <section className="flex min-h-screen w-full max-lg:flex-col">
-      <div className="flex min-w-0 flex-1 flex-col px-4 py-8">
+    <section className="grid min-h-screen w-full lg:grid-cols-[minmax(0,1fr)_24rem] lg:grid-rows-[1fr_auto]">
+      <div className="min-w-0 px-4 py-8">
         <div className="mx-auto w-full max-w-2xl space-y-8 pb-8">
           <div className="text-center">
             <ScoreAxis percentage={scorePercentage} />
@@ -81,23 +81,24 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
             />
           </div>
         </div>
-        <div className="mx-auto mt-auto flex w-full max-w-2xl flex-wrap items-center justify-center gap-x-3 gap-y-2 pt-6 text-center">
-          <CreditsLinks />
-          <button
-            className="rounded-full border border-slate-300 px-3 py-1 text-sm font-medium whitespace-nowrap"
-            onClick={onStartOver}
-            type="button"
-          >
-            Start over
-          </button>
-        </div>
       </div>
       <ResultsDetailPanel
         answers={attempt.answers}
         item={selectedItem}
         onNext={handleNext}
         onPrevious={handlePrevious}
+        totalItems={items.length}
       />
+      <div className="mx-auto flex w-full max-w-2xl flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pb-8 text-center lg:col-start-1">
+        <CreditsLinks />
+        <button
+          className="rounded-full border border-slate-300 px-3 py-1 text-sm font-medium whitespace-nowrap"
+          onClick={onStartOver}
+          type="button"
+        >
+          Start over
+        </button>
+      </div>
     </section>
   )
 }

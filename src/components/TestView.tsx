@@ -44,6 +44,9 @@ export function TestView({ attempt, item, items, onAnswer, onNavigate }: Props) 
                 P / ←
               </span>
             </button>
+            <span className="text-sm font-medium text-slate-600">
+              {item.id}/{items.length}
+            </span>
             <button
               className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium disabled:opacity-50"
               disabled={item.id === items.length}

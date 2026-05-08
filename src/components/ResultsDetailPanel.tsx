@@ -2,14 +2,14 @@ import { AnswerIndicator } from "./AnswerIndicator"
 import type { ArtTestItem, UserAnswers } from "../art/types"
 
 /** Render the fixed selected-artwork detail panel on the results page. */
-export function ResultsDetailPanel({ answers, item, onNext, onPrevious }: Props) {
+export function ResultsDetailPanel({ answers, item, onNext, onPrevious, totalItems }: Props) {
   const label = item.trueLabel === "human" ? "🧑‍🎨 Human art" : "🤖 AI art"
   const isCorrect = answers[item.id] === item.trueLabel
 
   return (
     <aside
       aria-label="Artwork details"
-      className="sticky top-0 flex h-screen w-96 shrink-0 flex-col border-l border-slate-200 bg-white shadow-xl max-lg:static max-lg:h-auto max-lg:w-full max-lg:border-t max-lg:border-l-0"
+      className="sticky top-0 flex h-screen w-full flex-col border-l border-slate-200 bg-white max-lg:static max-lg:h-auto max-lg:border-t max-lg:border-l-0 lg:col-start-2 lg:row-span-2 lg:row-start-1"
     >
       <img
         alt="Selected artwork"
@@ -22,7 +22,7 @@ export function ResultsDetailPanel({ answers, item, onNext, onPrevious }: Props)
           <AnswerIndicator isCorrect={isCorrect} />
         </div>
         <p className="text-sm text-slate-700">{item.attribution}</p>
-        <div className="mt-auto flex justify-between gap-3">
+        <div className="mt-auto flex items-center justify-between gap-3">
           <button
             aria-label="Previous artwork"
             className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium"
@@ -31,6 +31,9 @@ export function ResultsDetailPanel({ answers, item, onNext, onPrevious }: Props)
           >
             Previous
           </button>
+          <span className="text-sm font-medium text-slate-600">
+            {item.id}/{totalItems}
+          </span>
           <button
             aria-label="Next artwork"
             className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium"
@@ -54,4 +57,6 @@ type Props = {
   onNext: () => void
   /** Select the previous artwork. */
   onPrevious: () => void
+  /** The total number of artworks. */
+  totalItems: number
 }
