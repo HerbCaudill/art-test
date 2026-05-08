@@ -14,11 +14,12 @@
     "test:all": "pnpm typecheck && pnpm test run && pnpm test:pw --max-failures=1",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "ralph": "npx @herbcaudill/ralph"
+    "ralph": "ralph"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
     "@fontsource-variable/geist": "^5.2.8",
+    "@herbcaudill/ralph": "link:../ralph/packages/ralph-cli",
     "@tabler/icons-react": "^3.43.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
