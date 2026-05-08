@@ -1,52 +1,61 @@
-import { cx } from "../lib/cx"
+import { scoreAxisWidth, scoreAxisY } from "./constants"
+import { getScoreAxisBubbleLayout } from "./getScoreAxisBubbleLayout"
 
 /** Render the compact 0% to 100% score axis. */
 export function ScoreAxis({ percentage }: Props) {
+  const labels = getScoreAxisBubbleLayout(percentage)
+
   return (
-    <div className="mx-auto mt-6 max-w-xl px-4 pt-10 pb-16" aria-label="Score axis">
-      <div className="relative h-2 rounded-full bg-slate-200">
-        <div
-          aria-label="your result score marker"
-          className="absolute top-1/2 h-5 w-0.5 -translate-y-1/2 bg-slate-950"
-          style={{ left: `${percentage}%` }}
+    <div className="mx-auto mt-6 max-w-xl px-4 pt-2 pb-6" aria-label="Score axis">
+      <svg className="h-auto w-full overflow-visible" viewBox="0 0 576 152" role="img">
+        <line
+          x1="0"
+          x2={scoreAxisWidth}
+          y1={scoreAxisY}
+          y2={scoreAxisY}
+          className="stroke-slate-200"
+          strokeWidth="8"
+          strokeLinecap="round"
         />
-        <div
-          className="absolute bottom-7 -translate-x-1/2 text-sm font-semibold whitespace-nowrap text-slate-950"
-          style={{ left: `${percentage}%` }}
-        >
-          your result: {percentage}%
-        </div>
-        {scoreAxisLabels.map(label => (
-          <div
-            className="absolute top-1/2 -translate-x-1/2"
-            key={label.text}
-            style={{ left: `${label.position}%` }}
-          >
-            <div
-              aria-label={`${label.text} score marker`}
-              className="mx-auto h-5 w-0.5 -translate-y-1/2 bg-slate-400"
+        {labels.map(label => (
+          <g key={label.id}>
+            <line
+              x1={label.leaderStart.x}
+              x2={label.leaderEnd.x}
+              y1={label.leaderStart.y}
+              y2={label.leaderEnd.y}
+              className="stroke-slate-400"
+              strokeWidth="1.5"
             />
-            <div
-              className={cx(
-                "absolute top-5 text-xs whitespace-nowrap text-slate-600",
-                label.className,
-              )}
+            <circle
+              aria-label={`${label.label.replace(/: \d+%$/, "")} score marker`}
+              cx={label.axisX}
+              cy={label.axisY}
+              r={label.dotRadius}
+              className={label.id === "your-result" ? "fill-slate-950" : "fill-slate-500"}
+            />
+            <foreignObject
+              height={label.bubbleHeight}
+              width={label.bubbleWidth}
+              x={label.bubbleLeft - label.bubbleWidth / 2}
+              y={label.bubbleTop}
             >
-              {label.text}: {label.position}%
-            </div>
-          </div>
+              <div
+                className={
+                  label.id === "your-result" ?
+                    "flex h-full items-center justify-center rounded-full border border-slate-950 bg-white px-3 text-sm font-semibold whitespace-nowrap text-slate-950"
+                  : "flex h-full items-center justify-center rounded-full border border-slate-200 bg-white px-3 text-xs whitespace-nowrap text-slate-600"
+                }
+              >
+                {label.label}
+              </div>
+            </foreignObject>
+          </g>
         ))}
-      </div>
+      </svg>
     </div>
   )
 }
-
-const scoreAxisLabels = [
-  { className: "left-0", position: 0, text: "all wrong" },
-  { className: "right-2", position: 50, text: "random chance" },
-  { className: "left-2", position: 62, text: "mean result" },
-  { className: "right-0", position: 100, text: "all correct" },
-]
 
 type Props = {
   /** The user's score as a whole-number percentage. */
