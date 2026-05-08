@@ -17,6 +17,9 @@ export function AnswerButton({ disabled, label, onSelect, selected }: Props) {
       type="button"
     >
       {label === "human" ? "🧑‍🎨 Human" : "🤖 AI"}
+      <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">
+        {label === "human" ? "H" : "A"}
+      </span>
     </button>
   )
 }

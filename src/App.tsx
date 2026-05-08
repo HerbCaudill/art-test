@@ -53,13 +53,21 @@ export function App() {
   }
 
   useEffect(() => {
-    /** Handle test navigation and voting keyboard shortcuts. */
+    /** Handle start screen, test navigation, and voting keyboard shortcuts. */
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (!hasStarted || attempt.submitted || isTypingTarget(document.activeElement)) {
+      if (attempt.submitted || isTypingTarget(document.activeElement)) {
         return
       }
 
       const key = event.key.toLowerCase()
+
+      if (!hasStarted) {
+        if (key === "enter") {
+          event.preventDefault()
+          setHasStarted(true)
+        }
+        return
+      }
 
       if (key === "p" || key === "arrowleft") {
         event.preventDefault()

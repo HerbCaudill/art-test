@@ -39,6 +39,9 @@ export function TestView({ attempt, item, items, onAnswer, onNavigate }: Props) 
             type="button"
           >
             Previous
+            <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">
+              P / ←
+            </span>
           </button>
           <div className="min-w-0 flex-1">
             <ProgressGrid
@@ -55,6 +58,9 @@ export function TestView({ attempt, item, items, onAnswer, onNavigate }: Props) 
             type="button"
           >
             Next
+            <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">
+              N / →
+            </span>
           </button>
         </div>
       </footer>
