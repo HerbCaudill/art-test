@@ -56,7 +56,7 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
   }, [])
 
   return (
-    <section className="space-y-8 pr-[28rem]">
+    <section className="mx-auto w-full max-w-2xl space-y-8 pb-14">
       <div className="text-center">
         <h1 className="text-3xl font-semibold text-slate-950">Your score</h1>
         <ScoreAxis percentage={scorePercentage} />
@@ -67,9 +67,6 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
         >
           Start over
         </button>
-        <div className="mt-4">
-          <CreditsLinks />
-        </div>
       </div>
       <div className="grid gap-8 lg:grid-cols-2">
         <ThumbnailGrid
@@ -88,6 +85,11 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
           selectedItemId={selectedItem.id}
           title="🤖 AI art"
         />
+      </div>
+      <div className="fixed right-96 bottom-4 left-0 px-4 max-lg:right-0">
+        <div className="mx-auto w-full max-w-2xl">
+          <CreditsLinks />
+        </div>
       </div>
       <ResultsDetailPanel
         answers={attempt.answers}
