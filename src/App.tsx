@@ -134,18 +134,24 @@ export function App() {
     )
   }
 
+  if (hasStarted) {
+    return (
+      <main className="min-h-screen bg-slate-50 text-slate-950">
+        <TestView
+          attempt={attempt}
+          item={currentItem}
+          items={artTestItems}
+          onAnswer={handleAnswer}
+          onNavigate={handleNavigate}
+        />
+      </main>
+    )
+  }
+
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-8 text-slate-950">
       <div className="mx-auto max-w-6xl space-y-6">
-        {hasStarted ?
-          <TestView
-            attempt={attempt}
-            item={currentItem}
-            items={artTestItems}
-            onAnswer={handleAnswer}
-            onNavigate={handleNavigate}
-          />
-        : <IntroPanel onStart={handleStart} />}
+        <IntroPanel onStart={handleStart} />
       </div>
     </main>
   )

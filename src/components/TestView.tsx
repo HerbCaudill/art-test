@@ -23,7 +23,7 @@ export function TestView({ attempt, item, items, onAnswer, onNavigate }: Props) 
           />
         </ButtonGroup>
       </header>
-      <div className="mt-3 flex justify-center p-3">
+      <div className="flex justify-center">
         <img
           alt={`Artwork ${item.id}`}
           className="max-h-[72vh] max-w-full object-contain"
