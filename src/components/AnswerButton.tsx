@@ -16,7 +16,7 @@ export function AnswerButton({ disabled, label, onSelect, selected }: Props) {
       onClick={() => onSelect(label)}
       type="button"
     >
-      {label === "human" ? "Human" : "AI"}
+      {label === "human" ? "👤 Human" : "🤖 AI"}
     </button>
   )
 }
