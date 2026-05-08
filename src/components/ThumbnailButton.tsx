@@ -3,16 +3,9 @@ import { cx } from "../lib/cx"
 import type { ArtTestItem } from "../art/types"
 
 /** Render one compact results thumbnail with an adjacent detail popover. */
-export function ThumbnailButton({
-  correctAnswer,
-  isIncorrect,
-  item,
-  onHide,
-  onShow,
-  showDetails,
-  side,
-  userAnswer,
-}: Props) {
+export function ThumbnailButton({ isIncorrect, item, onHide, onShow, showDetails, side }: Props) {
+  const annotationPrefix = item.trueLabel === "human" ? "🧑‍🎨" : "🤖"
+
   return (
     <button
       aria-label={`${item.id}. ${item.title}`}
@@ -34,20 +27,21 @@ export function ThumbnailButton({
       : null}
       {showDetails ?
         <span
-          aria-label={item.title}
+          aria-label="Artwork details"
           className={cx(
-            "absolute top-1/2 z-20 hidden w-64 -translate-y-1/2 rounded-xl border border-slate-200 bg-white p-3 text-left text-sm text-slate-700 shadow-xl sm:block",
+            "absolute top-1/2 z-20 hidden w-80 -translate-y-1/2 overflow-hidden rounded-xl border border-slate-200 bg-white text-left text-sm text-slate-700 shadow-xl sm:block",
             side === "left" ? "right-full mr-3" : "left-full ml-3",
           )}
           role="tooltip"
         >
-          <span className="block text-xs font-semibold tracking-wide text-slate-500 uppercase">
-            Item {item.id}
+          <img
+            alt="Selected artwork"
+            className="max-h-72 w-full object-contain"
+            src={item.imagePath}
+          />
+          <span className="block p-3 text-xs">
+            {annotationPrefix} {item.attribution}
           </span>
-          <span className="mt-1 block font-semibold text-slate-950">{item.title}</span>
-          <span className="mt-2 block">Your answer: {userAnswer}</span>
-          <span className="block">Correct answer: {correctAnswer}</span>
-          <span className="mt-2 block text-xs">{item.attribution}</span>
         </span>
       : null}
     </button>
@@ -55,8 +49,6 @@ export function ThumbnailButton({
 }
 
 type Props = {
-  /** Correct answer display label. */
-  correctAnswer: string
   /** Whether the user answered this item incorrectly. */
   isIncorrect: boolean
   /** The artwork item. */
@@ -69,6 +61,4 @@ type Props = {
   showDetails: boolean
   /** Which side to position the detail popover on. */
   side: "left" | "right"
-  /** User answer display label. */
-  userAnswer: string
 }

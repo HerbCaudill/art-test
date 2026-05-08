@@ -12,12 +12,9 @@ export function ThumbnailGrid({ answers, ariaLabel, items, title }: Props) {
       <div aria-label={ariaLabel} className="mt-3 grid grid-cols-5 gap-1 sm:grid-cols-8">
         {items.map((item, index) => {
           const isIncorrect = answers[item.id] !== item.trueLabel
-          const userAnswer = answers[item.id] === "human" ? "Human" : "AI"
-          const correctAnswer = item.trueLabel === "human" ? "Human" : "AI"
 
           return (
             <ThumbnailButton
-              correctAnswer={correctAnswer}
               isIncorrect={isIncorrect}
               item={item}
               key={item.id}
@@ -25,7 +22,6 @@ export function ThumbnailGrid({ answers, ariaLabel, items, title }: Props) {
               onShow={() => setActiveItemId(item.id)}
               showDetails={activeItemId === item.id}
               side={index % 8 > 3 ? "left" : "right"}
-              userAnswer={userAnswer}
             />
           )
         })}

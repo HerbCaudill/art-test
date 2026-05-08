@@ -28,7 +28,7 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
           answers={attempt.answers}
           ariaLabel="Human art answer key"
           items={humanItems}
-          title="👤 Human art"
+          title="🧑‍🎨 Human art"
         />
         <ThumbnailGrid
           answers={attempt.answers}
