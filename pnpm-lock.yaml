@@ -7,15 +7,15 @@ settings:
 importers:
   .:
     dependencies:
-      "@herbcaudill/ralph":
-        specifier: link:../ralph/packages/ralph-cli
-        version: link:../ralph/packages/ralph-cli
       "@base-ui/react":
         specifier: ^1.4.1
         version: 1.4.1(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      "@fontsource-variable/geist":
+      "@fontsource-variable/ibm-plex-sans":
         specifier: ^5.2.8
         version: 5.2.8
+      "@herbcaudill/ralph":
+        specifier: link:../ralph/packages/ralph-cli
+        version: link:../ralph/packages/ralph-cli
       "@tabler/icons-react":
         specifier: ^3.43.0
         version: 3.43.0(react@19.2.6)
@@ -1116,10 +1116,10 @@ packages:
         integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==,
       }
 
-  "@fontsource-variable/geist@5.2.8":
+  "@fontsource-variable/ibm-plex-sans@5.2.8":
     resolution:
       {
-        integrity: sha512-cJ6m9e+8MQ5dCYJsLylfZrgBh6KkG4bOLckB35Tr9J/EqdkEM6QllH5PxqP1dhTvFup+HtMRPuz9xOjxXJggxw==,
+        integrity: sha512-n5PF2iFa0CZT0QYTPzxvZ39opC9LnU0zdoRccoADbs+Dtsd+lbXOZF7RNuIPHcQX1dKjF63sxnRImQIB5eD0Ag==,
       }
 
   "@hono/node-server@1.19.14":
@@ -6760,7 +6760,7 @@ snapshots:
 
   "@floating-ui/utils@0.2.11": {}
 
-  "@fontsource-variable/geist@5.2.8": {}
+  "@fontsource-variable/ibm-plex-sans@5.2.8": {}
 
   "@hono/node-server@1.19.14(hono@4.12.18)":
     dependencies:
