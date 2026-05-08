@@ -109,7 +109,7 @@ describe("App", () => {
     startTest()
     answerAllItems()
 
-    expect(screen.getByRole("heading", { name: "Your score" })).toBeInTheDocument()
+    expect(screen.queryByRole("heading", { name: "Your score" })).not.toBeInTheDocument()
     expect(screen.queryByText("48% correct")).not.toBeInTheDocument()
     expect(screen.getByText("your result: 48%")).toBeInTheDocument()
     expect(screen.getByText("all wrong: 0%")).toBeInTheDocument()

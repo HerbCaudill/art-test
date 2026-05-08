@@ -27,7 +27,7 @@ test("completes a full attempt, locks results, reviews details, and starts over"
 
   await answerItems(page, 50)
 
-  await expect(page.getByRole("heading", { name: "Your score" })).toBeVisible()
+  await expect(page.getByRole("heading", { name: "Your score" })).toHaveCount(0)
   await expect(page.getByText(/your result: \d+%/)).toBeVisible()
   await expect(page.getByRole("button", { name: "Human" })).toHaveCount(0)
 
@@ -66,7 +66,7 @@ test("persists answers and submitted results across refresh", async ({ page }) =
   await answerItems(page, 49)
   await page.reload()
 
-  await expect(page.getByRole("heading", { name: "Your score" })).toBeVisible()
+  await expect(page.getByText(/your result: \d+%/)).toBeVisible()
 })
 
 test("opens answer-key details with keyboard focus", async ({ page }) => {

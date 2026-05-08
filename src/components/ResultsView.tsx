@@ -60,7 +60,6 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="mx-auto w-full max-w-2xl space-y-8 pb-8">
           <div className="text-center">
-            <h1 className="text-3xl font-semibold text-slate-950">Your score</h1>
             <ScoreAxis percentage={scorePercentage} />
             <button
               className="mt-5 rounded-2xl border border-slate-300 px-5 py-3 font-semibold"
