@@ -2,7 +2,7 @@ import type { ArtTestItem } from "../art/types"
 
 /** Render the fixed selected-artwork detail panel on the results page. */
 export function ResultsDetailPanel({ item, onNext, onPrevious }: Props) {
-  const annotationPrefix = item.trueLabel === "human" ? "🧑‍🎨" : "🤖"
+  const label = item.trueLabel === "human" ? "🧑‍🎨 Human art" : "🤖 AI art"
 
   return (
     <aside
@@ -15,9 +15,8 @@ export function ResultsDetailPanel({ item, onNext, onPrevious }: Props) {
         src={item.imagePath}
       />
       <div className="flex flex-1 flex-col gap-4 p-4">
-        <p className="text-sm text-slate-700">
-          {annotationPrefix} {item.attribution}
-        </p>
+        <h2 className="text-xl font-semibold text-slate-950">{label}</h2>
+        <p className="text-sm text-slate-700">{item.attribution}</p>
         <div className="mt-auto flex justify-between gap-3">
           <button
             aria-label="Previous artwork"

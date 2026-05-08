@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
+import { CreditsLinks } from "./CreditsLinks"
 import { ResultsDetailPanel } from "./ResultsDetailPanel"
+import { ScoreAxis } from "./ScoreAxis"
 import { ThumbnailGrid } from "./ThumbnailGrid"
 import { getAdjacentItem } from "../art/getAdjacentItem"
 import { getScore } from "../art/getScore"
@@ -57,7 +59,7 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
     <section className="space-y-8 pr-[28rem]">
       <div className="text-center">
         <h1 className="text-3xl font-semibold text-slate-950">Your score</h1>
-        <p className="mt-3 text-5xl font-semibold text-slate-950">{scorePercentage}% correct</p>
+        <ScoreAxis percentage={scorePercentage} />
         <button
           className="mt-5 rounded-2xl border border-slate-300 px-5 py-3 font-semibold"
           onClick={onStartOver}
@@ -65,6 +67,9 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
         >
           Start over
         </button>
+        <div className="mt-4">
+          <CreditsLinks />
+        </div>
       </div>
       <div className="grid gap-8 lg:grid-cols-2">
         <ThumbnailGrid
