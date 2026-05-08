@@ -118,7 +118,7 @@ describe("App", () => {
     expect(screen.getByText("all correct: 100%")).toBeInTheDocument()
     expect(screen.getAllByLabelText(/score marker/)).toHaveLength(5)
     expect(screen.getByRole("link", { name: "original test" })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: "results post" })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "discussion of results" })).toBeInTheDocument()
     expect(
       screen.queryByText("Answers are locked. Start over to try again."),
     ).not.toBeInTheDocument()

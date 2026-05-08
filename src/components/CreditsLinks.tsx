@@ -2,7 +2,7 @@
 export function CreditsLinks() {
   return (
     <p className="text-sm text-slate-600">
-      Credits:{" "}
+      See the{" "}
       <a
         className="font-medium text-slate-950 underline"
         href="https://www.astralcodexten.com/p/ai-art-turing-test"
@@ -14,9 +14,9 @@ export function CreditsLinks() {
         className="font-medium text-slate-950 underline"
         href="https://www.astralcodexten.com/p/how-did-you-do-on-the-ai-art-turing"
       >
-        results post
-      </a>
-      .
+        discussion of results
+      </a>{" "}
+      on Astral Codex Ten.
     </p>
   )
 }
