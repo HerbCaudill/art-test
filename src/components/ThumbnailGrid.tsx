@@ -15,11 +15,11 @@ export function ThumbnailGrid({
       <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
       <div aria-label={ariaLabel} className="mt-3 grid grid-cols-4 gap-1.5 sm:grid-cols-6">
         {items.map(item => {
-          const isIncorrect = answers[item.id] !== item.trueLabel
+          const isCorrect = answers[item.id] === item.trueLabel
 
           return (
             <ThumbnailButton
-              isIncorrect={isIncorrect}
+              isCorrect={isCorrect}
               isSelected={selectedItemId === item.id}
               item={item}
               key={item.id}

@@ -89,7 +89,12 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
           title="🤖 AI art"
         />
       </div>
-      <ResultsDetailPanel item={selectedItem} onNext={handleNext} onPrevious={handlePrevious} />
+      <ResultsDetailPanel
+        answers={attempt.answers}
+        item={selectedItem}
+        onNext={handleNext}
+        onPrevious={handlePrevious}
+      />
     </section>
   )
 }

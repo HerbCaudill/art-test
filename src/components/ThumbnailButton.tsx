@@ -1,9 +1,9 @@
-import { IconX } from "@tabler/icons-react"
+import { AnswerIndicator } from "./AnswerIndicator"
 import { cx } from "../lib/cx"
 import type { ArtTestItem } from "../art/types"
 
 /** Render one compact results thumbnail. */
-export function ThumbnailButton({ isIncorrect, isSelected, item, onSelect }: Props) {
+export function ThumbnailButton({ isCorrect, isSelected, item, onSelect }: Props) {
   return (
     <button
       aria-label={`${item.id}. ${item.title}`}
@@ -16,21 +16,16 @@ export function ThumbnailButton({ isIncorrect, isSelected, item, onSelect }: Pro
       type="button"
     >
       <img alt="" className="h-full w-full object-cover" src={item.imagePath} />
-      {isIncorrect ?
-        <span
-          aria-label="Incorrect answer"
-          className="absolute top-1 right-1 rounded-full bg-red-600 p-0.5 text-white"
-        >
-          <IconX aria-hidden="true" size={12} />
-        </span>
-      : null}
+      <span className="absolute top-1 right-1">
+        <AnswerIndicator isCorrect={isCorrect} />
+      </span>
     </button>
   )
 }
 
 type Props = {
-  /** Whether the user answered this item incorrectly. */
-  isIncorrect: boolean
+  /** Whether the user answered this item correctly. */
+  isCorrect: boolean
   /** Whether this item is selected in the detail panel. */
   isSelected: boolean
   /** The artwork item. */
