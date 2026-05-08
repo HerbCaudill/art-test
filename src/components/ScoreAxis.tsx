@@ -43,8 +43,8 @@ export function ScoreAxis({ percentage }: Props) {
               <div
                 className={
                   label.id === "your-result" ?
-                    "flex h-full items-center justify-center rounded-full border border-slate-950 bg-white px-3 text-sm font-semibold whitespace-nowrap text-slate-950"
-                  : "flex h-full items-center justify-center rounded-full border border-slate-200 bg-white px-3 text-xs whitespace-nowrap text-slate-600"
+                    "flex h-full items-center justify-center rounded-full border border-slate-950 bg-white px-3 text-[26px] font-semibold whitespace-nowrap text-slate-950 sm:text-sm"
+                  : "flex h-full items-center justify-center rounded-full border border-slate-200 bg-white px-3 text-[24px] whitespace-nowrap text-slate-600 sm:text-xs"
                 }
               >
                 {label.label}

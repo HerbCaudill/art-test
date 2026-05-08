@@ -62,7 +62,7 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
           <div className="text-center">
             <ScoreAxis percentage={scorePercentage} />
           </div>
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="hidden gap-8 lg:grid lg:grid-cols-2">
             <ThumbnailGrid
               answers={attempt.answers}
               ariaLabel="Human art answer key"
