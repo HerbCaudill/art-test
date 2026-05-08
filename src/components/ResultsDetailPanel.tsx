@@ -9,7 +9,7 @@ export function ResultsDetailPanel({ answers, item, onNext, onPrevious }: Props)
   return (
     <aside
       aria-label="Artwork details"
-      className="fixed top-0 right-0 z-20 flex h-screen w-96 max-w-[42vw] flex-col border-l border-slate-200 bg-white shadow-xl"
+      className="sticky top-8 flex h-[calc(100vh-4rem)] w-96 shrink-0 flex-col border border-slate-200 bg-white shadow-xl max-lg:static max-lg:h-auto max-lg:w-full"
     >
       <img
         alt="Selected artwork"

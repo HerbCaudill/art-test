@@ -56,38 +56,40 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
   }, [])
 
   return (
-    <section className="mx-auto w-full max-w-2xl space-y-8 pb-14">
-      <div className="text-center">
-        <h1 className="text-3xl font-semibold text-slate-950">Your score</h1>
-        <ScoreAxis percentage={scorePercentage} />
-        <button
-          className="mt-5 rounded-2xl border border-slate-300 px-5 py-3 font-semibold"
-          onClick={onStartOver}
-          type="button"
-        >
-          Start over
-        </button>
-      </div>
-      <div className="grid gap-8 lg:grid-cols-2">
-        <ThumbnailGrid
-          answers={attempt.answers}
-          ariaLabel="Human art answer key"
-          items={humanItems}
-          onSelect={setSelectedItem}
-          selectedItemId={selectedItem.id}
-          title="🧑‍🎨 Human art"
-        />
-        <ThumbnailGrid
-          answers={attempt.answers}
-          ariaLabel="AI art answer key"
-          items={aiItems}
-          onSelect={setSelectedItem}
-          selectedItemId={selectedItem.id}
-          title="🤖 AI art"
-        />
-      </div>
-      <div className="fixed right-96 bottom-4 left-0 px-4 max-lg:right-0">
-        <div className="mx-auto w-full max-w-2xl">
+    <section className="flex min-h-[calc(100vh-4rem)] w-full gap-8 max-lg:flex-col">
+      <div className="flex min-w-0 flex-1 flex-col">
+        <div className="mx-auto w-full max-w-2xl space-y-8 pb-8">
+          <div className="text-center">
+            <h1 className="text-3xl font-semibold text-slate-950">Your score</h1>
+            <ScoreAxis percentage={scorePercentage} />
+            <button
+              className="mt-5 rounded-2xl border border-slate-300 px-5 py-3 font-semibold"
+              onClick={onStartOver}
+              type="button"
+            >
+              Start over
+            </button>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <ThumbnailGrid
+              answers={attempt.answers}
+              ariaLabel="Human art answer key"
+              items={humanItems}
+              onSelect={setSelectedItem}
+              selectedItemId={selectedItem.id}
+              title="🧑‍🎨 Human art"
+            />
+            <ThumbnailGrid
+              answers={attempt.answers}
+              ariaLabel="AI art answer key"
+              items={aiItems}
+              onSelect={setSelectedItem}
+              selectedItemId={selectedItem.id}
+              title="🤖 AI art"
+            />
+          </div>
+        </div>
+        <div className="mx-auto mt-auto w-full max-w-2xl pt-6">
           <CreditsLinks />
         </div>
       </div>
