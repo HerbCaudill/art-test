@@ -56,8 +56,8 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
   }, [])
 
   return (
-    <section className="flex min-h-[calc(100vh-4rem)] w-full gap-8 max-lg:flex-col">
-      <div className="flex min-w-0 flex-1 flex-col">
+    <section className="flex min-h-screen w-full max-lg:flex-col">
+      <div className="flex min-w-0 flex-1 flex-col px-4 py-8">
         <div className="mx-auto w-full max-w-2xl space-y-8 pb-8">
           <div className="text-center">
             <ScoreAxis percentage={scorePercentage} />

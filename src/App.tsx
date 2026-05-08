@@ -126,12 +126,18 @@ export function App() {
     setHasStarted(false)
   }
 
+  if (attempt.submitted) {
+    return (
+      <main className="min-h-screen bg-slate-50 text-slate-950">
+        <ResultsView attempt={attempt} items={artTestItems} onStartOver={handleStartOver} />
+      </main>
+    )
+  }
+
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-8 text-slate-950">
       <div className="mx-auto max-w-6xl space-y-6">
-        {attempt.submitted ?
-          <ResultsView attempt={attempt} items={artTestItems} onStartOver={handleStartOver} />
-        : hasStarted ?
+        {hasStarted ?
           <TestView
             attempt={attempt}
             item={currentItem}
