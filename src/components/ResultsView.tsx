@@ -61,13 +61,6 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
         <div className="mx-auto w-full max-w-2xl space-y-8 pb-8">
           <div className="text-center">
             <ScoreAxis percentage={scorePercentage} />
-            <button
-              className="mt-5 rounded-2xl border border-slate-300 px-5 py-3 font-semibold"
-              onClick={onStartOver}
-              type="button"
-            >
-              Start over
-            </button>
           </div>
           <div className="grid gap-8 lg:grid-cols-2">
             <ThumbnailGrid
@@ -88,8 +81,15 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
             />
           </div>
         </div>
-        <div className="mx-auto mt-auto w-full max-w-2xl pt-6">
+        <div className="mx-auto mt-auto flex w-full max-w-2xl flex-wrap items-center justify-center gap-x-3 gap-y-2 pt-6 text-center">
           <CreditsLinks />
+          <button
+            className="rounded-full border border-slate-300 px-3 py-1 text-sm font-medium whitespace-nowrap"
+            onClick={onStartOver}
+            type="button"
+          >
+            Start over
+          </button>
         </div>
       </div>
       <ResultsDetailPanel
