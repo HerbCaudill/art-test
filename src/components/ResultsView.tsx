@@ -89,10 +89,10 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
         onPrevious={handlePrevious}
         totalItems={items.length}
       />
-      <div className="mx-auto flex w-full max-w-2xl flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pb-8 text-center lg:col-start-1">
+      <div className="mx-auto flex w-full max-w-2xl flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pb-4 text-center lg:col-start-1">
         <CreditsLinks />
         <button
-          className="rounded-full border border-slate-300 px-3 py-1 text-sm font-medium whitespace-nowrap"
+          className="rounded-full border border-slate-300 px-2 py-0.5 text-xs font-medium whitespace-nowrap sm:text-sm"
           onClick={onStartOver}
           type="button"
         >

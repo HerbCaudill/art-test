@@ -22,10 +22,10 @@ export function ResultsDetailPanel({ answers, item, onNext, onPrevious, totalIte
           <AnswerIndicator isCorrect={isCorrect} />
         </div>
         <p className="text-sm text-slate-700">{item.attribution}</p>
-        <div className="mt-auto flex items-center justify-between gap-3">
+        <div className="-mx-4 mt-auto flex items-center justify-between gap-3 border-t border-slate-200 px-4 pt-3">
           <button
             aria-label="Previous artwork"
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium"
+            className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium"
             onClick={onPrevious}
             type="button"
           >
@@ -36,7 +36,7 @@ export function ResultsDetailPanel({ answers, item, onNext, onPrevious, totalIte
           </span>
           <button
             aria-label="Next artwork"
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium"
+            className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium"
             onClick={onNext}
             type="button"
           >
