@@ -1,5 +1,5 @@
 /** The gap between bubbles and score-axis elements. */
-export const scoreAxisBubbleGap = 20
+export const scoreAxisBubbleGap = 60
 
 /** The score-axis bubble height in pixels. */
 export const scoreAxisBubbleHeight = 32

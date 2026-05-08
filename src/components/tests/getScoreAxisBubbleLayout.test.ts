@@ -33,11 +33,9 @@ describe("getScoreAxisBubbleLayout", () => {
     const userResult = layout.find(item => item.id === "your-result")!
     const comparisonLabels = layout.filter(item => item.id !== "your-result")
 
-    expect(
-      userResult.axisY - (userResult.bubbleTop + userResult.bubbleHeight),
-    ).toBeGreaterThanOrEqual(20)
+    expect(userResult.axisY - (userResult.bubbleTop + userResult.bubbleHeight)).toBe(60)
     comparisonLabels.forEach(label => {
-      expect(label.bubbleTop - label.axisY).toBeGreaterThanOrEqual(20)
+      expect(label.bubbleTop - label.axisY).toBeGreaterThanOrEqual(60)
     })
   })
 
