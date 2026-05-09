@@ -13,7 +13,7 @@ export function ResultsDetailPanel({ answers, item, onNext, onPrevious, totalIte
     >
       <img
         alt="Selected artwork"
-        className="max-h-[58vh] w-full object-contain"
+        className="max-h-[58vh] w-full object-contain object-top"
         src={item.imagePath}
       />
       <div className="flex flex-1 flex-col gap-4 p-4">

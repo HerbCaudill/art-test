@@ -26,7 +26,7 @@ export function TestView({ attempt, item, items, onAnswer, onNavigate }: Props) 
       <div className="flex justify-center">
         <img
           alt={`Artwork ${item.id}`}
-          className="max-h-[72vh] max-w-full object-contain"
+          className="max-h-[72vh] max-w-full object-contain object-top"
           src={item.imagePath}
         />
       </div>
