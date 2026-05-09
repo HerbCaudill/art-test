@@ -56,13 +56,13 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
   }, [])
 
   return (
-    <section className="grid min-h-screen w-full pb-14 lg:grid-cols-[minmax(0,1fr)_24rem]">
-      <div className="min-w-0 px-4 pt-8 pb-2 lg:pb-20">
+    <section className="grid min-h-screen w-full pb-14 sm:grid-cols-[minmax(0,1fr)_24rem]">
+      <div className="min-w-0 px-4 pt-8 pb-2 sm:pb-20">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="text-center">
             <ScoreAxis percentage={scorePercentage} />
           </div>
-          <div className="hidden gap-8 lg:grid lg:grid-cols-2">
+          <div className="hidden gap-8 sm:grid sm:grid-cols-2">
             <ThumbnailGrid
               answers={attempt.answers}
               ariaLabel="Human art answer key"
@@ -89,7 +89,7 @@ export function ResultsView({ attempt, items, onStartOver }: Props) {
         onPrevious={handlePrevious}
         totalItems={items.length}
       />
-      <footer className="fixed right-0 bottom-0 left-0 z-10 border-t border-slate-200 bg-slate-50/95 px-4 py-2 text-center backdrop-blur lg:right-96">
+      <footer className="fixed right-0 bottom-0 left-0 z-10 border-t border-slate-200 bg-slate-50/95 px-4 py-2 text-center backdrop-blur sm:right-96">
         <div className="mx-auto flex w-full max-w-2xl flex-wrap items-center justify-center gap-x-2 gap-y-1">
           <CreditsLinks />
           <button
