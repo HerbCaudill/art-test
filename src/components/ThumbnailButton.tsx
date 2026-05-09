@@ -16,7 +16,7 @@ export function ThumbnailButton({ isCorrect, isSelected, item, onSelect }: Props
       type="button"
     >
       <img alt="" className="h-full w-full object-cover" src={item.imagePath} />
-      <span className="absolute top-1 right-1">
+      <span className="absolute -top-1 -right-1">
         <AnswerIndicator isCorrect={isCorrect} />
       </span>
     </button>

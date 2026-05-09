@@ -13,7 +13,7 @@ export function ThumbnailGrid({
   return (
     <section>
       <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
-      <div aria-label={ariaLabel} className="mt-3 grid grid-cols-4 gap-1.5 sm:grid-cols-6">
+      <div aria-label={ariaLabel} className="mt-3 grid grid-cols-3 gap-3">
         {items.map(item => {
           const isCorrect = answers[item.id] === item.trueLabel
 
