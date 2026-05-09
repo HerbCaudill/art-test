@@ -8,7 +8,7 @@ export function ThumbnailButton({ isCorrect, isSelected, item, onSelect }: Props
     <button
       aria-label={`${item.id}. ${item.title}`}
       className={cx(
-        "group relative block aspect-square overflow-hidden focus:ring-2 focus:ring-slate-950 focus:outline-none",
+        "group relative block aspect-square focus:ring-2 focus:ring-slate-950 focus:outline-none",
         isSelected && "ring-2 ring-slate-950",
       )}
       onClick={() => onSelect(item)}
@@ -16,8 +16,8 @@ export function ThumbnailButton({ isCorrect, isSelected, item, onSelect }: Props
       type="button"
     >
       <img alt="" className="h-full w-full object-cover" src={item.imagePath} />
-      <span className="absolute -top-1 -right-1">
-        <AnswerIndicator isCorrect={isCorrect} />
+      <span className="absolute -top-2 -right-2">
+        <AnswerIndicator isCorrect={isCorrect} size="lg" />
       </span>
     </button>
   )
